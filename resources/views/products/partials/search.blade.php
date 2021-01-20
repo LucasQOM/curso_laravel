@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-3">
                         <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <a class="btn btn-warning" href="/product">Limpar</a>
+                        <a class="btn btn-warning" href="{{route('product.index')}}">Limpar</a>
                     </div>
                 </form>
 
