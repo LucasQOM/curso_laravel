@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         // cria um novo registro no banco de dados
@@ -51,9 +51,34 @@ class UserController extends Controller
 
         // Mail::to($user)->send(new TesteUnidev($user));
 
-        $users = User::orderBy('name', 'asc')->paginate(15);
+        $user = new User();
 
-        return view('users.index', compact('users'));
+            $users = $user->orderBy('name', 'asc')->paginate(15);
+
+        return view('users.index', compact ('users'));
 
     }
+
+    public function create()
+    {
+        return view('users.create');
+    }
+
+    public function store(Request $request)
+    {
+        try{
+            $data = $request->all();
+            $user = new User();
+            $user->create($data);
+
+            $request->session()->flash('success', 'Registro gravado com sucesso');
+
+        }catch(\Exception $e){
+            $request->session()->flash('erro', 'Ocorreu um erro ao gravar dados');
+        }
+
+        return redirect()->back();
+    }
+
+
 }

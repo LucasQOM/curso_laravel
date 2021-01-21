@@ -1,7 +1,13 @@
 @extends('layout.template')
 @section('main')
-    <h1>Lista de Usuários</h1>
+@include('layout.messages')
+@include('users.partials.search')
 
+<div class="row">
+    <div class="col-md d-flex justify-content-between align-items-center">
+        <h1>Listagem de Usuários</h1>
+        <a href="{{route('user.create')}}" class="btn btn-success">Cadastrar novo</a>
+    </div>
     <table class="table table-dark table-striped mt-5">
         <thead>
             <tr>
@@ -25,6 +31,6 @@
 
     <div class="mt-5">
         {{$users->links()}}
-    </div>
+</div>
 
 @endsection

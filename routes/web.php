@@ -20,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/user', [UserController::class, 'index']);
+Route::resource('/user', UserController::class);
 Route::resource('product', ProductController::class);
 

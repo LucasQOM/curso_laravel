@@ -35,7 +35,6 @@
                         <a class="btn btn-warning" href="{{route('product.index')}}">Limpar</a>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
