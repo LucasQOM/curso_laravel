@@ -75,9 +75,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product, Request $request)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -87,9 +87,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        try{
+        $data =  $request->all();
+        $product->update($data);
+        $request->session()->flash('success', 'Dados atualizados com sucesso');
+        }catch(\Exception $e){
+            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -98,8 +105,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        try{
+        $product->delete();
+        $request->session()->flash('success', 'Dados Deletados com sucesso');
+        }catch (\Exception $e){
+            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados');
+        }
+        return redirect()->back();
     }
 }

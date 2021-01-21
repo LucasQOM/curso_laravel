@@ -1,6 +1,6 @@
 @extends('layout.template')
 @section('main')
-
+@include('layout.messages')
     @include('products.partials.search')
 
     <div class="row">
@@ -13,25 +13,28 @@
     <table class="table table-dark table-striped mt-5">
         <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nome do Produto</th>
-              <th scope="col">Preço</th>
-              <th scope="col">Fabricante</th>
-              <th scope="col">Validade</th>
-              <th scope="col">Fabricação</th>
-              <th scope="col"></th>
+              <th>ID</th>
+              <th>Nome do Produto</th>
+              <th>Preço</th>
+              <th>Fabricante</th>
+              <th>Validade</th>
+              <th>Fabricação</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
               @foreach($products as $product)
             <tr>
-                <td scope="col">{{$product->id}}</th>
-                <td scope="col">{{$product->name}}</th>
-                <td scope="col">{{$product->price_formated}}</th>
-                <td scope="col">{{$product->provider}}</th>
-                <td scope="col">{{$product->expiration_date->format('d/m/Y')}}</th>
-                <td scope="col">{{$product->manufacturing_date->format('d/m/Y')}}</th>
-                <td scope="col"></th>
+                <td>{{$product->id}}</th>
+                <td>{{$product->name}}</th>
+                <td>{{$product->price_formated}}</th>
+                <td>{{$product->provider}}</th>
+                <td>{{$product->expiration_date->format('d/m/Y')}}</th>
+                <td>{{$product->manufacturing_date->format('d/m/Y')}}</th>
+                <td>
+                <a class="btn btn-primary btn-sm" href="{{route('product.edit', $product->id)}}">Editar</div>
+                <a class="btn btn-danger btn-sm" onclick="deleteInDatabase('{{ route('product.destroy', $product->id) }}')">Excluir</div>
+                </th>
             </tr>
             @endforeach
           </tbody>
