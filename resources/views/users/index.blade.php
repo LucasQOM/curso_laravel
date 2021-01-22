@@ -30,7 +30,11 @@
       </table>
 
     <div class="mt-5">
-        {{$users->links()}}
+        {{$users->appends([
+            'action' => request('action'),
+            'keyword' => request('keyword'),
+            'email' => request('email')
+            ])->links()}}
 </div>
 
 @endsection

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Mail\TesteUnidev;
 use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -52,9 +54,11 @@ class UserController extends Controller
         // Mail::to($user)->send(new TesteUnidev($user));
 
         $user = new User();
-
+        if($request->has('action') && $request->get('action') === 'search'){
+            $users = $user->filterAll($request);
+        } else {
             $users = $user->orderBy('name', 'asc')->paginate(15);
-
+        }
         return view('users.index', compact ('users'));
 
     }
@@ -64,10 +68,11 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         try{
             $data = $request->all();
+            $data['password'] = bcrypt($data['password']);
             $user = new User();
             $user->create($data);
 

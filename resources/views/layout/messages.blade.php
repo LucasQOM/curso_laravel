@@ -15,7 +15,7 @@
     <strong>Aviso!</strong><br>
     Alguns dados informados aparentam ter problemas: <br>
     <ul class="mt-2 mb-0">
-        @foreach(session()->get('erros')->all() as $error)
+        @foreach(session()->get('errors')->all() as $error)
         <li>{{$error}}</li>
         @endforeach
     </ul>

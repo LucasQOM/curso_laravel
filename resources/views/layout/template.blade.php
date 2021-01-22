@@ -18,14 +18,22 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link {{(request()->segment(1) === 'product') ? 'active' : '' }}" href="{{route('product.index')}}">Produtos</a>
-              </li>
-              <li class="nav-item">
+            <div class="navbar-nav me-auto">
+                <a class="nav-link {{(request()->segment(1) === 'product') ? 'active' : '' }}" href="{{ route('product.index') }}">Produtos</a>
                 <a class="nav-link {{(request()->segment(1) === 'user') ? 'active' : '' }}" href="/user">Usuarios</a>
-              </li>
-            </ul>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a class="nav-link" type="button"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                </form>
+            </div>
+            <span class="nav-text text-light" >
+                Bem-vindo: {{  auth()->user()->name }}
+            </span>
           </div>
         </div>
       </nav>

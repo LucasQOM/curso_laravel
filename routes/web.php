@@ -16,10 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('product.index');
+    return view('welcome');
 });
 
-Route::resource('/user', UserController::class);
-Route::resource('product', ProductController::class);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
-//teste 2
+require __DIR__.'/auth.php';
+
+Route::middleware(['auth'])->group(function(){
+
+    Route::resource('/user', UserController::class);
+
+    Route::resource('product', ProductController::class);
+});

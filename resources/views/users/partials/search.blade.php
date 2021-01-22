@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-3">
                         <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <a class="btn btn-warning" href="/user">Limpar</a>
+                        <a class="btn btn-warning" href="{{route('user.index')}}">Limpar</a>
                     </div>
                 </form>
 

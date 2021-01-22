@@ -14,7 +14,8 @@
 
     @csrf
     @include('users.partials.form')
-
+    <form method="post" action="#"><input type="hidden" name="remember_token" value="{{csrf_token()}}"></form>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 @endsection
