@@ -62,9 +62,9 @@
         if(order_by){
         order_by.value = "{{request()->get('order_by')}}";
         }
-        const provider = document.querySelector('#provider');
+        const provider = document.querySelector('#provider_id');
         if(provider){
-        provider.value = "{{$product->provider ?? ''}}";
+        provider.value = "{{$product->provider_id ?? ''}}";
         }
         function deleteInDatabase(path) {
             if(confirm('Você tem certeza que seja remover este registro?'))

@@ -28,11 +28,11 @@
                 <td>{{$product->id}}</th>
                 <td>{{$product->name}}</th>
                 <td>{{$product->price_formated}}</th>
-                <td>{{$product->provider}}</th>
+                <td>{{$product->provider->name}}</th>
                 <td>{{$product->expiration_date->format('d/m/Y')}}</th>
                 <td>{{$product->manufacturing_date->format('d/m/Y')}}</th>
                 <td>
-                <a class="btn btn-primary btn-sm" href="{{route('product.edit', $product->id)}}">Editar</div>
+                <a class="btn btn-primary btn-sm" style="margin-right: 15px" href="{{route('product.edit', $product->id)}}">Editar</div>
                 <a class="btn btn-danger btn-sm" onclick="deleteInDatabase('{{ route('product.destroy', $product->id) }}')">Excluir</div>
                 </th>
             </tr>

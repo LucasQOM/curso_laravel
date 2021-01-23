@@ -48,6 +48,10 @@ protected $casts = [
         return $products;
     }
 
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
 
 }
 

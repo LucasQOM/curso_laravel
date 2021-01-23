@@ -25,6 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3',
+            'provider_id' => 'required',
             'price' => 'required|numeric',
             'manufacturing_date' => 'required|date',
             'expiration_date' => 'required|date'

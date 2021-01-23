@@ -7,6 +7,7 @@ use App\Mail\TesteUnidev;
 use App\Models\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -72,7 +73,7 @@ class UserController extends Controller
     {
         try{
             $data = $request->all();
-            $data['password'] = bcrypt($data['password']);
+            $data['password'] = Hash::make($data['password']);
             $user = new User();
             $user->create($data);
 
@@ -85,5 +86,32 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function edit(User $user, Request $request)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(UserRequest $request, User $user)
+    {
+        try{
+        $data =  $request->all();
+        $user->update($data);
+        $request->session()->flash('success', 'Dados atualizados com sucesso');
+        }catch(\Exception $e){
+            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados');
+        }
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request, User $user)
+    {
+        try{
+        $user->delete();
+        $request->session()->flash('success', 'Dados Deletados com sucesso');
+        }catch (\Exception $e){
+            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados');
+        }
+        return redirect()->back();
+    }
 
 }

@@ -24,6 +24,8 @@
                 <td scope="col">{{$user->name}}</th>
                 <td scope="col">{{$user->email}}</th>
                 <td scope="col"></th>
+                <a class="btn btn-primary btn-sm" style="margin-right: 15px" href="{{route('user.edit', $user->id)}}">Editar</div>
+                <a class="btn btn-danger btn-sm" onclick="deleteInDatabase('{{ route('user.destroy', $user->id) }}')">Excluir</div>
             </tr>
             @endforeach
           </tbody>
