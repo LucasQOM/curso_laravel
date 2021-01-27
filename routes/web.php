@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,6 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/user', UserController::class);
 
     Route::resource('product', ProductController::class);
+
+    Route::resource('/provider', ProviderController::class);
 });

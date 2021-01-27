@@ -10,7 +10,7 @@
 
 @include('layout.messages')
 
-<form action="{{route('product.update', $user->id)}}" method="post">
+<form action="{{route('user.update', $user->id)}}" method="post">
 
     @csrf
     @method('put')

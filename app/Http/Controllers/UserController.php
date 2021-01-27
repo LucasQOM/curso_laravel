@@ -95,6 +95,7 @@ class UserController extends Controller
     {
         try{
         $data =  $request->all();
+        $data['password'] = Hash::make($data['password']);
         $user->update($data);
         $request->session()->flash('success', 'Dados atualizados com sucesso');
         }catch(\Exception $e){

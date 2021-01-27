@@ -7,14 +7,21 @@
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email"
       value = "{{$user->email ?? ''}}" required>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Senha" value = "{{$user->password ?? ''}}" required>
-
-    </div>
+    <form id="form-senha" role="form">
+      <label for="Senha">Senha</label>
+      <input type="password" class="form-control" id="password" minlength="6" name="password" placeholder="Senha" required>
+      <label for="Confirmação de senha">Confirme sua senha</label>
+      <input type="password" class="form-control" placeholder="Confirme Senha" id="confirm_password"  required>
+    </form>
+    {{-- <form class="pure-form">
+        <fieldset>
+            <legend>Confirme sua Senha</legend>
+            <input type="password" placeholder="Senha" id="password" required>
+            <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
+        </fieldset>
+    </form> --}}
     <div class="row mt-5">
-    {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+    <button type="submit" class="btn btn-primary">Confirmar</button>
   </form>
 

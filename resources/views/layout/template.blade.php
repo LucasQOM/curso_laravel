@@ -20,14 +20,15 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav me-auto">
                 <a class="nav-link {{(request()->segment(1) === 'product') ? 'active' : '' }}" href="{{ route('product.index') }}">Produtos</a>
-                <a class="nav-link {{(request()->segment(1) === 'user') ? 'active' : '' }}" href="/user">Usuarios</a>
+                <a class="nav-link {{(request()->segment(1) === 'user') ? 'active' : '' }}" href="{{route('user.index')}}">Usuarios</a>
+                <a class="nav-link {{(request()->segment(1) === 'provider') ? 'active' : '' }}" href="{{route('provider.index')}}">Fabricantes</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
                     <a class="nav-link" type="button"
                             onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Logout') }}
+                            this.closest('form').submit();">
+                        Sair
                     </a>
                 </form>
             </div>
@@ -74,6 +75,17 @@
             deleteForm.submit();
             }
         }
+        var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword(){
+            if(password.value != confirm_password.value){
+                confirm_password.setCustomValidity("Senhas não coincidem!");
+            }else{
+                confirm_password.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
     </script>
 
 
