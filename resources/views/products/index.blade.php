@@ -28,7 +28,7 @@
                 <td>{{$product->id}}</th>
                 <td>{{$product->name}}</th>
                 <td>{{$product->price_formated}}</th>
-                <td>{{$product->provider->name}}</th>
+                <td>{{$product->provider->name ?? '---'}}</th>
                 <td>{{$product->expiration_date->format('d/m/Y')}}</th>
                 <td>{{$product->manufacturing_date->format('d/m/Y')}}</th>
                 <td>
@@ -49,5 +49,4 @@
             'order_by' => request('order_by')
               ])->links()}}
       </div>
-
 @endsection

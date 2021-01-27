@@ -23,17 +23,17 @@ class ProviderController extends Controller
 
     public function create()
     {
-        $providers = Provider::all();
+        $provider = Provider::all();
 
-        return view('providers.create', compact('provider'));
+        return view('providers.create');
     }
 
     public function store(ProviderRequest $request)
     {
         try{
             $data = $request->all();
-            $provider = new Provider();
-            $provider->create($data);
+            $providers = new Provider();
+            $providers->create($data);
 
             $request->session()->flash('success', 'Registro gravado com sucesso');
 

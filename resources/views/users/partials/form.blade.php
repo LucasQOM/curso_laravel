@@ -13,15 +13,9 @@
       <input type="password" class="form-control" id="password" minlength="6" name="password" placeholder="Senha" required>
       <label for="Confirmação de senha">Confirme sua senha</label>
       <input type="password" class="form-control" placeholder="Confirme Senha" id="confirm_password"  required>
+      <div class="row mt-5">
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+        </div>
     </form>
-    {{-- <form class="pure-form">
-        <fieldset>
-            <legend>Confirme sua Senha</legend>
-            <input type="password" placeholder="Senha" id="password" required>
-            <input type="password" placeholder="Confirme Senha" id="confirm_password" required>
-        </fieldset>
-    </form> --}}
-    <div class="row mt-5">
-    <button type="submit" class="btn btn-primary">Confirmar</button>
   </form>
 

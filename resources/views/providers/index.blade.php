@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-md d-flex justify-content-between align-items-center">
-        <h1>Listagem de Fabricantes</h1>
+        <h1>Listagem de Fornecedores</h1>
         <a href="{{route('provider.create')}}" class="btn btn-success">Cadastrar novo</a>
     </div>
     <table class="table table-dark table-striped mt-5">

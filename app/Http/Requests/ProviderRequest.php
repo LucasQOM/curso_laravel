@@ -24,7 +24,9 @@ class ProviderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3',
+            'email' => 'required',
+            'phone' => 'required'
         ];
     }
 }

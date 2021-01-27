@@ -20,8 +20,15 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <a class="btn btn-warning" href="{{route('user.index')}}">Limpar</a>
+                        <select class="form-select" id="order_by" name="order_by">
+                            <option value="">Ordernar por...</option>
+                            <option value="name">Nome</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-dark">Filtrar</button>
+                        <a class="btn btn-danger" href="{{route('user.index')}}">Limpar</a>
                     </div>
                 </form>
 

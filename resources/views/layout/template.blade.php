@@ -21,7 +21,7 @@
             <div class="navbar-nav me-auto">
                 <a class="nav-link {{(request()->segment(1) === 'product') ? 'active' : '' }}" href="{{ route('product.index') }}">Produtos</a>
                 <a class="nav-link {{(request()->segment(1) === 'user') ? 'active' : '' }}" href="{{route('user.index')}}">Usuarios</a>
-                <a class="nav-link {{(request()->segment(1) === 'provider') ? 'active' : '' }}" href="{{route('provider.index')}}">Fabricantes</a>
+                <a class="nav-link {{(request()->segment(1) === 'provider') ? 'active' : '' }}" href="{{route('provider.index')}}">Fornecedores</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 

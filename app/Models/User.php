@@ -22,13 +22,32 @@ class User extends Authenticatable
         'updated_at' => 'datetime',
     ];
 
+    // public function filterAll($request)
+    // {
+    //     $users = User::where('name', 'like', '%' . $request->get('keyword') . '%');
+
+    //     if(!empty($request->get('email')))
+    //         $users = User::where('email', 'like', '%' . $request->get('email') . '%');
+
+    //     return $users->paginate(10);
+    // }
+
     public function filterAll($request)
     {
-        $users = User::where('name', 'like', '%' . $request->get('keyword') . '%');
-
-        if(!empty($request->get('email')))
-            $users = User::where('email', 'like', '%' . $request->get('email') . '%');
-
-        return $users->paginate(10);
+        $users = User::where('name', 'like', '%' . $request->get('keyword') . '%')
+                            ->where('email', '>=', $request->get('email') ?? 0);
+    switch($request->get('order_by')){
+        case 'name':
+            $users = $users->orderBy('name', 'asc');
+            break;
+        case 'email':
+            $users = $users->orderBy('email', 'asc');
+            break;
     }
+
+    $users = $users->paginate(10);
+
+        return $users;
+    }
+
 }

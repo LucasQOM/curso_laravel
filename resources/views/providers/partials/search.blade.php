@@ -22,9 +22,21 @@
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefone" value="{{request()->get('phone')}}">
                         </div>
                     </div>
-                    <div class="col-md">
-                        <button type="submit" class="btn btn-primary">Filtrar</button>
-                        <a class="btn btn-warning" href="{{route('provider.index')}}">Limpar</a>
+                    <div class="col-md-3">
+                        <select class="form-select" id="order_by" name="order_by">
+                            <option value="">Ordernar por...</option>
+                            <option value="name">Nome</option>
+                            <option value="email">E-mail</option>
+                            <option value="phone">Telefone</option>
+                        </select>
+                    </div>
+                    {{-- <div class="col-md">
+                        <button type="submit" class="btn btn-dark">Filtrar</button>
+                        <a class="btn btn-danger" href="{{route('provider.index')}}">Limpar</a>
+                    </div> --}}
+                    <div class="col-md-12 mt-2 text-center">
+                        <button type="submit" class="btn btn-dark">Filtrar</button>
+                        <a class="btn btn-danger" href="{{route('provider.index')}}">Limpar</a>
                     </div>
                 </form>
             </div>
