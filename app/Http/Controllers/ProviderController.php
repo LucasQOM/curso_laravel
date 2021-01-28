@@ -23,8 +23,6 @@ class ProviderController extends Controller
 
     public function create()
     {
-        $provider = Provider::all();
-
         return view('providers.create');
     }
 
@@ -32,13 +30,12 @@ class ProviderController extends Controller
     {
         try{
             $data = $request->all();
-            $providers = new Provider();
-            $providers->create($data);
-
+            $provider = new Provider();
+            $provider->create($data);
             $request->session()->flash('success', 'Registro gravado com sucesso');
 
         }catch(\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao gravar dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao gravar dados' . $e->getMessage());
         }
 
         return redirect()->back();
@@ -46,7 +43,6 @@ class ProviderController extends Controller
 
     public function edit(Provider $provider, Request $request)
     {
-        $providers = Provider::all();
         return view('providers.edit', compact('provider'));
     }
 
@@ -57,7 +53,7 @@ class ProviderController extends Controller
         $provider->update($data);
         $request->session()->flash('success', 'Dados atualizados com sucesso');
         }catch(\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados' . $e->getMessage());
         }
         return redirect()->back();
     }
@@ -68,7 +64,7 @@ class ProviderController extends Controller
         $provider->delete();
         $request->session()->flash('success', 'Dados Deletados com sucesso');
         }catch (\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados' . $e->getMessage());
         }
         return redirect()->back();
     }

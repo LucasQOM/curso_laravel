@@ -11,7 +11,7 @@ class Provider extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name', 'email', 'phone'];
+    protected $fillable = ['name', 'email', 'phone', 'active'];
 
     protected $casts = [
     ];

@@ -55,7 +55,7 @@ class ProductController extends Controller
             $request->session()->flash('success', 'Registro gravado com sucesso');
 
         }catch(\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao gravar dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao gravar dados' . $e->getMessage());
         }
 
         return redirect()->back();
@@ -98,7 +98,7 @@ class ProductController extends Controller
         $product->update($data);
         $request->session()->flash('success', 'Dados atualizados com sucesso');
         }catch(\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao atualizar dados' . $e->getMessage());
         }
         return redirect()->back();
     }
@@ -115,7 +115,7 @@ class ProductController extends Controller
         $product->delete();
         $request->session()->flash('success', 'Dados Deletados com sucesso');
         }catch (\Exception $e){
-            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados');
+            $request->session()->flash('erro', 'Ocorreu um erro ao deletar os dados' . $e->getMessage());
         }
         return redirect()->back();
     }

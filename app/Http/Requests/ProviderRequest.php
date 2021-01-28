@@ -26,7 +26,8 @@ class ProviderRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'email' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'active' => 'required'
         ];
     }
 }

@@ -15,6 +15,7 @@
               <th scope="col">Nome</th>
               <th scope="col">Email</th>
               <th scope="col">Telefone</th>
+              <th scope="col">Estado da Empresa</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -25,6 +26,7 @@
                 <td scope="col">{{$provider->name}}</th>
                 <td scope="col">{{$provider->email}}</th>
                 <td scope="col">{{$provider->phone}}</th>
+                <td scope="col">{{$provider->active ? 'Ativa' : 'Desativada'}}</th>
                 <td scope="col"></th>
                 <a class="btn btn-primary btn-sm" style="margin-right: 15px" href="{{route('provider.edit', $provider->id)}}">Editar</div>
                 <a class="btn btn-danger btn-sm" onclick="deleteInDatabase('{{ route('provider.destroy', $provider->id) }}')">Excluir</div>

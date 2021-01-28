@@ -23,10 +23,17 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required|min:3',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|min:6'
         ];
+
+        if(!empty($this->segment(2))){
+            if(empty($this->password)){
+                unset($rules['password']);
+            }
+        }
+        return $rules;
     }
 }
